@@ -29,7 +29,9 @@ export default function CommonNav() {
             className="w-6 h-6 text-primary-500 block md:hidden"
           />
           <Link href="/" aria-label="Go to homepage">
-            <h1 className="text-2xl text-primary-500 font-bold">Property</h1>
+            <h1 className="text-2xl text-primary-500 dark:text-primary-400 font-bold">
+              Property
+            </h1>
           </Link>
         </div>
 
@@ -42,7 +44,7 @@ export default function CommonNav() {
                 className={`${
                   pathName === link.href
                     ? "text-primary-400 bg-primary-100"
-                    : "text-stone-600"
+                    : "text-stone-600 dark:text-stone-300"
                 } hover:text-primary-400 p-2 font-medium rounded-full text-sm`}
               >
                 {link.title}

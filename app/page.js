@@ -18,27 +18,39 @@ export default function Home() {
     type: "",
     status: "",
   });
+  const [cardsValue, setCardsValue] = useState({
+    checkIn: 0,
+    checkOut: 0,
+  });
 
   const dashboardCards = [
     {
       name: "Check'ins",
-      count: "12",
-      icon: <FaKey className="w-5 h-5 text-primary-500" />,
+      count: cardsValue.checkIn,
+      icon: (
+        <FaKey className="w-5 h-5 text-primary-500 dark:text-primary-400" />
+      ),
     },
     {
       name: "Check'outs",
-      count: "32",
-      icon: <FaBagShopping className="w-5 h-5 text-primary-500" />,
+      count: cardsValue.checkOut,
+      icon: (
+        <FaBagShopping className="w-5 h-5 text-primary-500 dark:text-primary-400" />
+      ),
     },
     {
       name: "Earnings",
       count: "$4.923",
-      icon: <FaWallet className="w-5 h-5 text-primary-500" />,
+      icon: (
+        <FaWallet className="w-5 h-5 text-primary-500 dark:text-primary-400" />
+      ),
     },
     {
       name: "Reviews",
       count: "4.5",
-      icon: <BsBuildingsFill className="w-5 h-5 text-primary-500" />,
+      icon: (
+        <BsBuildingsFill className="w-5 h-5 text-primary-500 dark:text-primary-400" />
+      ),
     },
   ];
 
@@ -54,6 +66,20 @@ export default function Home() {
     return matchesType && matchesStatus;
   });
 
+  // Checkin and checkout depands on available and rented
+  useEffect(() => {
+    const checkInProperty = properties.filter(
+      (item) => item.status === "available"
+    );
+    const checkOutProperty = properties.filter(
+      (item) => item.status === "rented"
+    );
+    setCardsValue(() => ({
+      checkIn: checkInProperty.length,
+      checkOut: checkOutProperty.length,
+    }));
+  }, [properties]);
+
   return (
     <div className="space-y-8 pt-8">
       <section className="flex flex-col md:flex-row justify-start md:justify-between items-start md:items-center gap-4 md:gap-0">
@@ -68,8 +94,8 @@ export default function Home() {
             className="object-cover w-8 md:w-16 h-8 md:h-16 rounded-full"
           />
           <div className="space-y-1">
-            <h1 className="text-2xl font-semibold">Good morning</h1>
-            <p className="text-sm text-stone-600">
+            <h1 className="text-2xl font-semibold">Welcome!</h1>
+            <p className="text-sm text-stone-600 dark:text-stone-400">
               Here's an overview of your properties
             </p>
           </div>

@@ -3,7 +3,7 @@ import { cn } from "@/lib/utils";
 const variants = {
   primary: "bg-primary-400 text-white dark:bg-primary-500",
   rounded:
-    "border rounded-full border-primary-400 text-primary-400 dark:border-primary-500 dark:text-primary-500",
+    "border rounded-full border-primary-400 text-primary-400 dark:border-primary-400 dark:text-primary-400",
 };
 
 export default function Button({
