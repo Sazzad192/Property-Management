@@ -23,7 +23,7 @@ const initialValues = {
   amenities: [],
   availability: "",
   is_agreed: false,
-  follow_up: "",
+  status: "",
   something_else: "",
   has_contacted: false,
 };
@@ -51,9 +51,9 @@ export default function CreateProperty() {
       !formik.values.bedroom ||
       !formik.values.bathroom ||
       !formik.values.location ||
-      !formik.values.ownership_status ||
+      !formik.values.status ||
       !formik.values.property_condition,
-    !formik.values.is_agreed || !formik.values.follow_up,
+    !formik.values.is_agreed,
   ];
 
   const steps = [
@@ -62,12 +62,33 @@ export default function CreateProperty() {
     { title: "Confirm" },
   ];
 
+  const submitForm = () => {
+    try {
+      // Retrieve the existing data from localStorage
+      const existingData = JSON.parse(localStorage.getItem("formData")) || [];
+
+      // Ensure the data is an array and append the new entry
+      const updatedData = Array.isArray(existingData)
+        ? [...existingData, formik.values]
+        : [formik.values];
+
+      // Save the updated array back to localStorage
+      localStorage.setItem("formData", JSON.stringify(updatedData));
+
+      alert("Form submitted and saved to local storage successfully!");
+
+      // Optionally reset the form or redirect the user
+      formik.resetForm();
+      setCurrentStep(1);
+    } catch (error) {
+      console.error("Error saving data to local storage", error);
+    }
+  };
+
   return (
     <div className="space-y-8 pt-8">
       <section>
-        <h3 className={`text-2xl font-medium text-left`}>
-          Please complete this form to join the waitlist!
-        </h3>
+        <h1 className={`text-2xl font-medium text-left`}>Create Property</h1>
       </section>
       <section>
         <ProgressBar steps={steps} currentStep={currentStep} />

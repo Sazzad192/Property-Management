@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Button from "@/components/buttons/Button";
 import DashboardCard from "@/components/cards/DashboardCard";
@@ -9,16 +9,15 @@ import { BsBuildingsFill } from "react-icons/bs";
 import { propertyType, rentalStatus } from "@/const";
 import SelectField from "@/components/forms/SelectField";
 import { useRouter } from "next/navigation";
+import PropertyTable from "@/components/propertyTable";
 
 export default function Home() {
   const route = useRouter();
+  const [properties, setProperties] = useState([]);
   const [params, setParams] = useState({
-    search: "",
     type: "",
     status: "",
   });
-
-  console.log(params);
 
   const dashboardCards = [
     {
@@ -42,6 +41,21 @@ export default function Home() {
       icon: <BsBuildingsFill className="w-5 h-5 text-primary-500" />,
     },
   ];
+
+  useEffect(() => {
+    const fetchProperties = () => {
+      const savedData = JSON.parse(localStorage.getItem("formData")) || [];
+      setProperties(savedData);
+    };
+    fetchProperties();
+  }, []);
+
+  // Filter properties based on selected filters
+  const filteredProperties = properties.filter((property) => {
+    const matchesType = !params.type || property.property_type === params.type;
+    const matchesStatus = !params.status || property.status === params.status;
+    return matchesType && matchesStatus;
+  });
 
   return (
     <div className="space-y-8 pt-8">
@@ -96,7 +110,7 @@ export default function Home() {
 
       {/* All Properties Section */}
       <section aria-labelledby="all-properties" className="space-y-4">
-        <div className="flex justify-between items-center">
+        <div className="flex flex-col md:flex-row justify-start md:justify-between items-start md:items-center gap-4">
           <h2 id="all-properties" className="text-2xl font-semibold">
             All Properties
           </h2>
@@ -131,7 +145,13 @@ export default function Home() {
             />
           </div>
         </div>
-        <div>{/* Table or list of properties goes here */}</div>
+        <div>
+          {filteredProperties.length > 0 ? (
+            <PropertyTable filteredProperties={filteredProperties} />
+          ) : (
+            <p>No properties found.</p>
+          )}
+        </div>
       </section>
     </div>
   );

@@ -21,9 +21,7 @@ export default function StepThree({ formik }) {
           checked={formik.values.is_agreed}
           onChange={formik.handleChange}
         />
-        By clicking here, you will have learned that the Comfortable Housing
-        Company has the right not to accept this request without giving the
-        reasons leading to this rejection.
+        By clicking here, you will agree with us.
       </label>
     </section>
   );

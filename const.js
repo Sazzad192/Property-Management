@@ -1,15 +1,15 @@
 // nav links
 export const navLinks = [
   { title: "Dashboard", href: "/" },
-  { title: "Add Property", href: "/create-property" },
+  { title: "Property", href: "/create-property" },
   { title: "Calendar", href: "#" },
-  { title: "Listings", href: "#" },
 ];
 
 export const propertyType = [
   { label: "Select Property", value: "" },
   { label: "Apartment", value: "apartment" },
   { label: "House", value: "house" },
+  { label: "Duplex", value: "duplex" },
   { label: "Commercial", value: "commercial" },
 ];
 
@@ -25,18 +25,9 @@ export const contactMethod = [
 ];
 
 export const propertyLocation = [
-  { label: "Al-Malga", value: "Al-Malga" },
-  { label: "Al-Sahafa", value: "Al-Sahafa" },
-  { label: "Hittin", value: "Hittin" },
-  { label: "Al-Wadi", value: "Al-Wadi" },
-  { label: "Al-Ghadir", value: "Al-Ghadir" },
-  { label: "Al-Nafil", value: "Al-Nafil" },
-  { label: "Al-Qayrawan", value: "Al-Qayrawan" },
-  { label: "Al-Aqiq", value: "Al-Aqiq" },
-  {
-    label: "King Abdullah Financial District",
-    value: "King Abdullah Financial District",
-  },
+  { label: "Dhaka", value: "Dhaka" },
+  { label: "Rajshahi", value: "Rajshahi" },
+  { label: "Bogura", value: "Bogura" },
   { label: "Others", value: "Others" },
 ];
 

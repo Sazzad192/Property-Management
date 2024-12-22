@@ -7,6 +7,7 @@ import {
   propertyConditionOptions,
   propertyLocation,
   propertyType,
+  rentalStatus,
 } from "@/const";
 
 export default function StepTwo({ formik }) {
@@ -150,17 +151,17 @@ export default function StepTwo({ formik }) {
           <p
             className={`appearance-none block text-sm font-semibold text-neutral-700`}
           >
-            Ownership status
+            Rental status
           </p>
           <Select
             placeholder="Enter ownership status"
-            name="ownership_status"
-            options={ownershipStatus}
-            value={ownershipStatus.find(
-              (option) => option.value === formik.values.ownership_status
+            name="status"
+            options={rentalStatus}
+            value={rentalStatus.find(
+              (option) => option.value === formik.values.status
             )}
             onChange={(selectedOption) => {
-              formik.setFieldValue("ownership_status", selectedOption.value);
+              formik.setFieldValue("status", selectedOption.value);
             }}
             styles={{
               control: (provided) => ({
