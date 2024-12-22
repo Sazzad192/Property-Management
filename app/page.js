@@ -1,7 +1,7 @@
 export default function Home() {
   return (
     <div>
-      <p>Hello this is nice</p>
+      <p className="text-primary-400 font-bold">Hello this is nice</p>
     </div>
   );
 }
