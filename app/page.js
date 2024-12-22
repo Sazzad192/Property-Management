@@ -10,6 +10,7 @@ import { propertyType, rentalStatus } from "@/const";
 import SelectField from "@/components/forms/SelectField";
 import { useRouter } from "next/navigation";
 import PropertyTable from "@/components/propertyTable";
+import EmptyState from "@/components/EmptyState";
 
 export default function Home() {
   const route = useRouter();
@@ -172,7 +173,7 @@ export default function Home() {
           {filteredProperties.length > 0 ? (
             <PropertyTable filteredProperties={filteredProperties} />
           ) : (
-            <p>No properties found.</p>
+            <EmptyState />
           )}
         </div>
       </section>
