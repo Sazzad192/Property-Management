@@ -1,11 +1,8 @@
 import { cn } from "@/lib/utils";
 
 const variants = {
-  primary: "bg-primary-500 text-white",
-  secondary: "border-2 border-customRed text-customRed",
-  outline: "border-2 border-neutral-300 text-neutral-600",
-  redOutline: "border border-customRed text-customRed",
-  redRound: "bg-customRed text-white rounded-full",
+  primary: "bg-primary-400 text-white",
+  rounded: "border rounded-full border-primary-400 text-primary-400",
 };
 
 export default function Button({

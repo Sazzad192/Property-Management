@@ -1,8 +1,8 @@
 "use client";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { navLinks } from "@/const";
 import UserInfoBox from "./UserInfoBox";
-import { usePathname } from "next/navigation";
 
 export default function CommonNav() {
   const pathName = usePathname();
@@ -21,7 +21,7 @@ export default function CommonNav() {
           {navLinks.map((link) => (
             <li key={link.title}>
               <Link
-                href={`/${link.href}`}
+                href={link.href}
                 className={`${
                   pathName === link.href
                     ? "text-primary-400 bg-primary-100"
