@@ -43,11 +43,8 @@ export default function Home() {
   ];
 
   useEffect(() => {
-    const fetchProperties = () => {
-      const savedData = JSON.parse(localStorage.getItem("formData")) || [];
-      setProperties(savedData);
-    };
-    fetchProperties();
+    const savedData = JSON.parse(localStorage.getItem("formData")) || [];
+    setProperties(savedData);
   }, []);
 
   // Filter properties based on selected filters

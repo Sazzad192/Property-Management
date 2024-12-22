@@ -2,10 +2,11 @@
 import { useState } from "react";
 import Button from "@/components/buttons/Button";
 import ProgressBar from "@/components/ProgressBar";
-import StepOne from "./form/StepOne";
-import StepTwo from "./form/StepTwo";
-import StepThree from "./form/StepThree";
+import StepOne from "./components/StepOne";
+import StepTwo from "./components/StepTwo";
+import StepThree from "./components/StepThree";
 import { useFormik } from "formik";
+import toast from "react-hot-toast";
 
 const initialValues = {
   contact_method: "",
@@ -64,24 +65,20 @@ export default function CreateProperty() {
 
   const submitForm = () => {
     try {
-      // Retrieve the existing data from localStorage
       const existingData = JSON.parse(localStorage.getItem("formData")) || [];
 
-      // Ensure the data is an array and append the new entry
       const updatedData = Array.isArray(existingData)
         ? [...existingData, formik.values]
         : [formik.values];
 
-      // Save the updated array back to localStorage
       localStorage.setItem("formData", JSON.stringify(updatedData));
-
-      alert("Form submitted and saved to local storage successfully!");
-
+      toast.success("Property created successfully");
       // Optionally reset the form or redirect the user
       formik.resetForm();
       setCurrentStep(1);
     } catch (error) {
       console.error("Error saving data to local storage", error);
+      toast.danger("Property created successfully");
     }
   };
 
