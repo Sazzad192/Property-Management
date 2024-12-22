@@ -49,9 +49,7 @@ export default function StepOne({ formik }) {
         />
       </section>
       <section>
-        <p className="font-semibold text-[#404040]">
-          Preferred Contact Method :{" "}
-        </p>
+        <p className="font-semibold">Preferred Contact Method : </p>
         {contactMethod.map((item) => (
           <RadioCheckboxInput
             htmlFor={`radio-${item.value}`}

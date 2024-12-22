@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+  darkMode: "class",
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -8,15 +9,18 @@ export default {
   theme: {
     extend: {
       colors: {
-        "primary-500": "#115E59",
-        "primary-400": "#0D9488",
-        "primary-300": "#5EEAD4 ",
-        "primary-200": "#CCFBF1",
-        "primary-100": "#F0FDFA",
-
-        "secondary-500": "#FF9700",
-        "secondary-400": "#FCB117",
-        "secondary-300": "#FFD700",
+        primary: {
+          500: "var(--color-primary-500)",
+          400: "var(--color-primary-400)",
+          300: "var(--color-primary-300)",
+          200: "var(--color-primary-200)",
+          100: "var(--color-primary-100)",
+        },
+        secondary: {
+          500: "var(--color-secondary-500)",
+          400: "var(--color-secondary-400)",
+          300: "var(--color-secondary-300)",
+        },
       },
     },
   },

@@ -1,7 +1,7 @@
-import Footer from "@/components/Footer";
 import "./globals.css";
-import CommonNav from "@/components/navigation/CommonNav";
+import Footer from "@/components/Footer";
 import Toast from "@/components/providers/Toast";
+import CommonNav from "@/components/navigation/CommonNav";
 
 export const metadata = {
   title: "Property Management",

@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
 
 const defaultClassName =
-  "block w-full mt-1 border rounded-md border-gray-300 pl-3 pr-10 py-2 text-base font-medium focus:border-primary-500 focus:outline-none focus:ring-primary-500 sm:text-sm";
+  "block w-full mt-1 border rounded-md bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-600 pl-3 pr-10 py-2 text-base font-medium text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:border-primary-500 focus:outline-none focus:ring-primary-500 sm:text-sm";
 
 export default function SelectField({
   label = "",
@@ -17,15 +17,17 @@ export default function SelectField({
 }) {
   return (
     <div className="flex flex-col">
-      <label
-        htmlFor={id}
-        className={cn(
-          "block text-sm font-semibold text-gray-600",
-          labelClassName
-        )}
-      >
-        {label}
-      </label>
+      {label && (
+        <label
+          htmlFor={id}
+          className={cn(
+            "block text-sm font-semibold text-gray-600 dark:text-gray-300",
+            labelClassName
+          )}
+        >
+          {label}
+        </label>
+      )}
       <select
         id={id}
         name={name}
@@ -40,7 +42,9 @@ export default function SelectField({
             key={option.value}
             value={option.value}
             className={`${
-              option.disabled ? "text-gray-500" : "text-gray-900"
+              option.disabled
+                ? "text-gray-500 dark:text-gray-600"
+                : "text-gray-900 dark:text-white"
             } font-semibold`}
             disabled={option.disabled}
           >

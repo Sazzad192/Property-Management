@@ -6,6 +6,7 @@ import { navLinks } from "@/const";
 import UserInfoBox from "./UserInfoBox";
 import { HiOutlineMenuAlt1 } from "react-icons/hi";
 import MobileSidebar from "./MobileSidebar";
+import DarkModeToggle from "./DarlModeToggle";
 
 export default function CommonNav() {
   const pathName = usePathname();
@@ -51,7 +52,8 @@ export default function CommonNav() {
         </ul>
 
         {/* User Info Section */}
-        <div className="col-span-1 flex justify-end">
+        <div className="col-span-1 flex justify-end gap-4">
+          <DarkModeToggle />
           <UserInfoBox />
         </div>
       </nav>
